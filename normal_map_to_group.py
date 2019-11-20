@@ -21,7 +21,7 @@ bl_info = {
     "author": "Spooky spooky ghostman",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
     "blender": (2, 80, 0),
-    "version": (0, 0, 8),
+    "version": (0, 0, 10),
     "location": "Tools Panel (T) in Shader/Node Editor",
     "warning": "",
     "category": "Material",
@@ -173,7 +173,8 @@ def default_custom_nodes():
     node.operation = 'DOT_PRODUCT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
-    node.inputs[2].default_value = 1.0  # Scale
+    if (len(node.inputs) > 2):
+        node.inputs[2].default_value = 1.0  # Scale
     node = nodes.new('ShaderNodeVectorMath')
     node.name = 'Vector Math.001'
     node.label = ''
@@ -184,7 +185,8 @@ def default_custom_nodes():
     node.operation = 'DOT_PRODUCT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
-    node.inputs[2].default_value = 1.0  # Scale
+    if (len(node.inputs) > 2):
+        node.inputs[2].default_value = 1.0  # Scale
     node = nodes.new('ShaderNodeVectorMath')
     node.name = 'Vector Math.002'
     node.label = ''
@@ -194,7 +196,8 @@ def default_custom_nodes():
     node.location = Vector((-60.0, -60.0))
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
-    node.inputs[2].default_value = 1.0  # Scale
+    if (len(node.inputs) > 2):
+        node.inputs[2].default_value = 1.0  # Scale
     node.operation = 'DOT_PRODUCT'
     node = nodes.new('ShaderNodeCombineXYZ')
     node.name = 'Combine XYZ'
@@ -250,8 +253,8 @@ def default_custom_nodes():
     node.inputs[0].default_value = 1.0  # Strength
     node.inputs[1].default_value = 1000.0  # Distance
     node.inputs[2].default_value = 1.0  # Height
-    node.inputs[3].default_value = 1.0  # Height_dx
-    node.inputs[4].default_value = 1.0  # Height_dy
+    node.inputs[3].default_value = 1  # Height_dx
+    node.inputs[4].default_value = 1  # Height_dy
     node.inputs[5].default_value = (0.0, 0.0, 0.0)  # Normal
     # for inp in node.inputs:
     #     if inp.name not in ['Height']:
