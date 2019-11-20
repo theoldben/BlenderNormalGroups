@@ -18,11 +18,11 @@
 
 bl_info = {
     "name": "Normal Map nodes to Custom",
-    "author": "Spooky spooky ghostman, Kamikaze, crute",
+    "author": "Spooky spooky ghostman",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
     "blender": (2, 80, 0),
-    "version": (0, 0, 10),
-    "location": "Tools Panel (T) in Shader/Node Editor",
+    "version": (0, 0, 11),
+    "location": "Tools Panel (T) in Shader Editor",
     "warning": "",
     "category": "Material",
 }
@@ -253,9 +253,12 @@ def default_custom_nodes():
     node.inputs[0].default_value = 1.0  # Strength
     node.inputs[1].default_value = 1000.0  # Distance
     node.inputs[2].default_value = 1.0  # Height
-    node.inputs[3].default_value = 1  # Height_dx
-    node.inputs[4].default_value = 1  # Height_dy
-    node.inputs[5].default_value = (0.0, 0.0, 0.0)  # Normal
+    if node.inputs[3].name == 'Normal':
+        node.inputs[3].default_value = (0.0, 0.0, 0.0)  # Normal
+    else:
+        node.inputs[3].default_value = 1.0  # Height_dx
+        node.inputs[4].default_value = 1.0  # Height_dy
+        node.inputs[5].default_value = (0.0, 0.0, 0.0)  # Normal
     # for inp in node.inputs:
     #     if inp.name not in ['Height']:
     #         node.inputs.remove(inp)
@@ -301,7 +304,8 @@ def default_custom_nodes():
     node.operation = 'SUBTRACT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
-    node.inputs[2].default_value = 1.0  # Scale
+    if (len(node.inputs) > 2):
+        node.inputs[2].default_value = 1.0  # Scale
     # node.inputs.remove(node.inputs[1])
     node = nodes.new('ShaderNodeVectorMath')
     node.name = 'Vector Math.004'
@@ -312,7 +316,8 @@ def default_custom_nodes():
     node.location = Vector((80.0, 20.0))
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
-    node.inputs[2].default_value = 1.0  # Scale
+    if (len(node.inputs) > 2):
+        node.inputs[2].default_value = 1.0  # Scale
 
     frame = nodes.new('NodeFrame')
     frame.name = 'Transpose Matrix'
@@ -417,10 +422,6 @@ def default_custom_nodes():
 
     return group
 
-
-
-# what = (MAT_OT_custom_normal, MUT_PT_normal_map_nodes)
-# register, unregister = bpy.utils.register_classes_factory(what)
 
 def register():
     bpy.utils.register_class(MAT_OT_custom_normal)
