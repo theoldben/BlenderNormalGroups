@@ -14,4 +14,4 @@ The performance gains are significant.
 
 This is based on this idea by pcanback: https://blenderartists.org/t/way-faster-normal-map-node-for-realtime-animation-playback-with-tangent-space-normals/1175379
 
-I am only maintaining this add-on, the heavy lifting was done by anonymous persons and 
+I am only maintaining this add-on, the heavy lifting was done by anonymous persons and BeheadedKamikaze https://github.com/BeheadedKamikaze
