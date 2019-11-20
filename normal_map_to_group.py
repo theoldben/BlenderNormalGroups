@@ -18,7 +18,7 @@
 
 bl_info = {
     "name": "Normal Map nodes to Custom",
-    "author": "Spooky spooky ghostman",
+    "author": "Spooky spooky ghostman, Kamikaze, crute",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
     "blender": (2, 80, 0),
     "version": (0, 0, 10),
