@@ -14,7 +14,7 @@ The performance gains are significant.
 
 Install the addon, go to the Shader Editor and extend its Tool Bar.  
 You will see two buttons, aptly named after the setups they will toggle.  
-**Normal** will give you the **regular Normal Map Setup**
+**Normal** will give you the **regular Normal Map Setup**  
 **Custom** will replace the existing Normal Map Nodes with the **Custom Setup** to speed up the Viewport. Switch this back to regular for rendering.
 
 ![Shader Editor Tool Bar Buttons](/img/normal_map_custom_group_shader_editor_buttons.png "This is where you find the buttons to toggle the script: Tool Bar in the Shader Editor")
