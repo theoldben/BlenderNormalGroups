@@ -19,6 +19,10 @@ You will see two buttons, aptly named after the setups they will toggle.
 
 ![Shader Editor Tool Bar Buttons](/img/normal_map_custom_group_shader_editor_buttons.png "This is where you find the buttons to toggle the script: Tool Bar in the Shader Editor")
 
+You will see this **Node Group** replacing the **Normal Map Node**  
+
+
+![Shader Editor Custom Setup Active](/img/custom_maps_toggled.png "Custom Setup Active")
 
 This is based on this idea by pcanback: https://blenderartists.org/t/way-faster-normal-map-node-for-realtime-animation-playback-with-tangent-space-normals/1175379
 
