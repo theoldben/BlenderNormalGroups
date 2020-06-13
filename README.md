@@ -27,3 +27,6 @@ You will see this **Node Group** replacing the **Normal Map Node**
 This is based on this idea by pcanback: https://blenderartists.org/t/way-faster-normal-map-node-for-realtime-animation-playback-with-tangent-space-normals/1175379
 
 I am only maintaining this add-on, the heavy lifting was done by anonymous persons and BeheadedKamikaze https://github.com/BeheadedKamikaze
+
+Now contains the necessary fixes to make it 2.83 compatible, graciously provided by Xavier Cho.
+Many thanks for these!
