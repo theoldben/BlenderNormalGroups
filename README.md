@@ -30,3 +30,5 @@ I am only maintaining this add-on, the heavy lifting was done by anonymous perso
 
 Now contains the necessary fixes to make it 2.83 compatible, graciously provided by Xavier Cho https://github.com/mysticfall .
 Many thanks for these!
+
+Tested in 3.0. Works just fine.
