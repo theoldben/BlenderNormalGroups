@@ -140,7 +140,7 @@ class MUT_PT_normal_map_nodes(bpy.types.Panel):
 
 
 def default_custom_nodes():
-    use_new_nodes = (bpy.app.version >= (2, 81))
+    use_new_nodes = bpy.app.version >= (2, 81) and bpy.app.version < (3, 2, 0)
 
     group = bpy.data.node_groups.new('Normal Map Optimized', 'ShaderNodeTree')
 
