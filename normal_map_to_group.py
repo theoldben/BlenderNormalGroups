@@ -176,7 +176,9 @@ def default_custom_nodes():
     input.max_value = 1.0
     input = group.inputs.new('NodeSocketColor', 'Color')
     input.default_value = ((0.5, 0.5, 1.0, 1.0))
-
+    # Input UV as Backup
+    input = group.inputs.new('NodeSocketVector', 'UV')
+    
     # Output
     group.outputs.new('NodeSocketVector', 'Normal')
 
