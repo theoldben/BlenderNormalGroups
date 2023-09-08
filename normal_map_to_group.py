@@ -103,7 +103,7 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                     if isinstance(node, bpy.types.ShaderNodeNormalMap):
                         uvNode = nodes.new('ShaderNodeUVMap')
                         uvNode.uv_map = node.uv_map
-                        uvNode.name = node.name+" -UV-"
+                        uvNode.name = node.name+" UV"
                         uvNode.parent = new.parent
                         uvNode.mute = True
                         uvNode.hide = True
