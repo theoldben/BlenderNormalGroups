@@ -108,7 +108,7 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                         uvNode.mute = True
                         uvNode.hide = True
                         uvNode.select = False
-                        uvNode.location = Vector((new.location.x-216.0011, new.location.y-9.06744))
+                        uvNode.location = Vector((new.location.x-200., new.location.y-10.))
                         uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs[2])
                     else:
                         try:
