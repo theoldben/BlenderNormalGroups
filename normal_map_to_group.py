@@ -119,7 +119,6 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                             new.uv_map = uvNode.uv_map
                             nodes.remove(uvNode)
                         except:
-                            print("Mustard Simplify - Could not restore UV before using Fast Normals")
                             pass
                     
                     nodes.remove(node)
