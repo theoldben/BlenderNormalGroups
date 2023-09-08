@@ -85,7 +85,7 @@ class MAT_OT_custom_normal(bpy.types.Operator):
             if not group:
                 return
 
-            for node in nodes:
+            for node in reversed(nodes):
                 new = None
                 if self.custom:
                     if isinstance(node, bpy.types.ShaderNodeNormalMap):
@@ -99,6 +99,29 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                 if new:
                     name = node.name
                     mirror(new, node)
+                    
+                    if isinstance(node, bpy.types.ShaderNodeNormalMap):
+                        uvNode = nodes.new('ShaderNodeUVMap')
+                        uvNode.uv_map = node.uv_map
+                        uvNode.name = node.name+" -UV-"
+                        uvNode.parent = new.parent
+                        uvNode.mute = True
+                        uvNode.hide = True
+                        uvNode.select = False
+                        uvNode.location = Vector((new.location.x-216.0011, new.location.y-9.06744))
+                        uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs[2])
+                    else:
+                        try:
+                            for input in node.inputs:
+                                if input and isinstance(input, bpy.types.NodeSocketVector) and input.is_linked:
+                                    if isinstance(input.links[0].from_node, bpy.types.ShaderNodeUVMap):
+                                        uvNode = input.links[0].from_node
+                            new.uv_map = uvNode.uv_map
+                            nodes.remove(uvNode)
+                        except:
+                            print("Mustard Simplify - Could not restore UV before using Fast Normals")
+                            pass
+                    
                     nodes.remove(node)
                     new.name = name
 
