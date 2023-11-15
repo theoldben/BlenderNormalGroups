@@ -170,17 +170,15 @@ def default_custom_nodes():
     links = group.links
 
     # Input
-    input = group.inputs.new('NodeSocketFloat', 'Strength')
+    input = group.interface.new_socket("Strength", in_out='INPUT', socket_type='NodeSocketFloat')
     input.default_value = 1.0
     input.min_value = 0.0
     input.max_value = 1.0
-    input = group.inputs.new('NodeSocketColor', 'Color')
+    input = group.interface.new_socket("Color", in_out='INPUT', socket_type='NodeSocketColor')
     input.default_value = ((0.5, 0.5, 1.0, 1.0))
-    # Input UV as Backup
-    input = group.inputs.new('NodeSocketVector', 'UV')
-    
+
     # Output
-    group.outputs.new('NodeSocketVector', 'Normal')
+    group.interface.new_socket("Normal", in_out='OUTPUT', socket_type='NodeSocketVector')
 
     # Add Nodes
     frame = nodes.new('NodeFrame')
