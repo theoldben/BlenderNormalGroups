@@ -32,3 +32,5 @@ Now contains the necessary fixes to make it 2.83 compatible, graciously provided
 Many thanks for these!
 
 Tested in 3.0. Works just fine.
+
+Compatibilty with 4.0 added, this will breaking compatibility with 2.8 through 3.0. If you need the addon for these Blender versions, you can get it from the according branch.
