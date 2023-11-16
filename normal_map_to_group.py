@@ -18,10 +18,10 @@
 
 bl_info = {
     "name": "Normal Map nodes to Custom",
-    "author": "Spooky spooky Ghostman, Kamikaze, crute",
+    "author": "Spooky spooky Ghostman, Kamikaze, crute, Mustard",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
     "blender": (4, 00, 0),
-    "version": (0, 1, 0),
+    "version": (0, 2, 0),
     "location": "Tools Panel (T) in Shader Editor",
     "warning": "",
     "category": "Material",
@@ -176,7 +176,10 @@ def default_custom_nodes():
     input.max_value = 1.0
     input = group.interface.new_socket("Color", in_out='INPUT', socket_type='NodeSocketColor')
     input.default_value = ((0.5, 0.5, 1.0, 1.0))
-
+    
+    # Input UV as Backup
+    input = group.interface.new_socket("UV", in_out='INPUT', socket_type='NodeSocketVector')
+    
     # Output
     group.interface.new_socket("Normal", in_out='OUTPUT', socket_type='NodeSocketVector')
 
