@@ -31,6 +31,9 @@ I am only maintaining this add-on, the heavy lifting was done by anonymous perso
 Now contains the necessary fixes to make it 2.83 compatible, graciously provided by Xavier Cho https://github.com/mysticfall .
 Many thanks for these!
 
-Tested in 3.0. Works just fine.
+**Tested in 3.0.** Works just fine.
 
-Compatibilty with 4.0 added, this will breaking compatibility with 2.8 through 3.0. If you need the addon for these Blender versions, you can get it from the according branch.
+**Compatibility with 4.0 added**, this will break compatibility with 2.8 through 3.0. 
+If you need the addon for these Blender versions, you can get it **from the according branch**. 
+
+Please note also, that if you have a file that still has normal groups from an older version in it, those will break the newer script. **Please convert those back to regular normal nodes in your older blender version and save the file for transfer to a newer one.**
