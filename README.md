@@ -1,5 +1,7 @@
 # BlenderNormalGroups
 
+## Find the correct version for your blender install by selecting the appropriate branch
+
 Eevee has severe frame-rate drops with animated objects that have normal maps on them. The problem has been reported and can be viewed with a nice sample file here:  
 
 https://developer.blender.org/T64458
