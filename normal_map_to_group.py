@@ -17,12 +17,12 @@
 # ##### END GPL LICENSE BLOCK #####
 
 bl_info = {
-    "name": "Normal Map nodes to Custom",
+    "name": "Normal Map nodes to Custom Node Group",
     "author": "Spooky spooky Ghostman, Kamikaze, crute",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
-    "blender": (2, 80, 0),
-    "version": (0, 1, 0),
-    "location": "Tools Panel (T) in Shader Editor",
+    "blender": (4, 1, 0),
+    "version": (0, 2, 1),
+    "location": "Tools Panel (T) in Shader Node Editor",
     "warning": "",
     "category": "Material",
 }
@@ -109,7 +109,7 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                         uvNode.hide = True
                         uvNode.select = False
                         uvNode.location = Vector((new.location.x-200., new.location.y-10.))
-                        uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs[2])
+                        uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs["Color"])
                     else:
                         try:
                             for input in node.inputs:
@@ -186,13 +186,13 @@ def default_custom_nodes():
     frame.label = 'Matrix * Normal Map'
     frame.location = Vector((540.0, -80.0))
     frame.hide = False
-    frame.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    frame.color = Color((0.6, 0.6, 0.6))
     node = nodes.new('ShaderNodeVectorMath')
     node.name = 'Vector Math'
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-60.0, 20.0))
     node.operation = 'DOT_PRODUCT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
@@ -204,7 +204,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-60.0, -20.0))
     node.operation = 'DOT_PRODUCT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
@@ -216,7 +216,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-60.0, -60.0))
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
@@ -228,7 +228,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((100.0, -20.0))
     node.inputs[0].default_value = 0.0  # X
     node.inputs[1].default_value = 0.0  # Y
@@ -237,23 +237,23 @@ def default_custom_nodes():
     frame = nodes.new('NodeFrame')
     frame.name = 'Generate TBN from Bump Node'
     frame.label = 'Generate TBN from Bump Node'
-    frame.location = Vector((-192.01412963867188, -77.50459289550781))
+    frame.location = Vector((-192.0, -77.0))
     frame.hide = False
-    frame.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    frame.color = Color((0.6, 0.6, 0.6))
     node = nodes.new('ShaderNodeUVMap')
     node.name = 'UV Map'
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
-    node.location = Vector((-247.98587036132812, -2.4954071044921875))
+    node.color = Color((0.6, 0.6, 0.6))
+    node.location = Vector((-247.0, -2.0))
     node = nodes.new('ShaderNodeSeparateXYZ')
     node.name = 'UV Gradients'
     node.label = 'UV Gradients'
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
-    node.location = Vector((-87.98587036132812, -2.4954071044921875))
+    node.color = Color((0.6, 0.6, 0.6))
+    node.location = Vector((-87.0, -2.0))
     node.inputs[0].default_value = (0.0, 0.0, 0.0)  # Vector
     # node.outputs.remove((node.outputs['Z']))
     node = nodes.new('ShaderNodeNewGeometry')
@@ -261,8 +261,8 @@ def default_custom_nodes():
     node.label = 'Normal'
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
-    node.location = Vector((72.01412963867188, -62.49540710449219))
+    node.color = Color((0.6, 0.6, 0.6))
+    node.location = Vector((72.0, -62.0))
     # for out in node.outputs:
     #     if out.name not in ['Normal']:
     #         node.outputs.remove(out)
@@ -271,8 +271,8 @@ def default_custom_nodes():
     node.label = 'Bi-Tangent'
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
-    node.location = Vector((72.01412963867188, -22.495407104492188))
+    node.color = Color((0.6, 0.6, 0.6))
+    node.location = Vector((72.0, -22.0))
     node.invert = True
     node.inputs[0].default_value = 1.0  # Strength
     node.inputs[1].default_value = 1000.0  # Distance
@@ -291,8 +291,8 @@ def default_custom_nodes():
     node.label = 'Tangent'
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
-    node.location = Vector((72.01412963867188, 17.504592895507812))
+    node.color = Color((0.6, 0.6, 0.6))
+    node.location = Vector((72.0, 17.0))
     node.invert = True
     # for inp in node.inputs:
     #     if inp.name not in ['Height']:
@@ -303,13 +303,13 @@ def default_custom_nodes():
     frame.label = 'Normal Map Processing'
     frame.location = Vector((180.0, -260.0))
     frame.hide = False
-    frame.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    frame.color = Color((0.6, 0.6, 0.6))
     node = nodes.new('NodeGroupInput')
     node.name = 'Group Input'
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-400.0, 20.0))
     node = nodes.new('ShaderNodeMixRGB')
     node.name = 'Influence'
@@ -323,7 +323,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-80.0, 20.0))
     node.operation = 'SUBTRACT'
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
@@ -336,7 +336,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((80.0, 20.0))
     node.inputs[0].default_value = (0.5, 0.5, 0.5)  # Vector
     node.inputs[1].default_value = (0.5, 0.5, 0.5)  # Vector
@@ -348,13 +348,13 @@ def default_custom_nodes():
     frame.label = 'Transpose Matrix'
     frame.location = Vector((180.0, -80.0))
     frame.hide = False
-    frame.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    frame.color = Color((0.6, 0.6, 0.6))
     node = nodes.new('ShaderNodeCombineXYZ')
     node.name = 'Combine XYZ.001'
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((80.0, 20.0))
     node.inputs[0].default_value = 0.0  # X
     node.inputs[1].default_value = 0.0  # Y
@@ -364,7 +364,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((80.0, -20.0))
     node.inputs[0].default_value = 0.0  # X
     node.inputs[1].default_value = 0.0  # Y
@@ -374,7 +374,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((80.0, -60.0))
     node.inputs[0].default_value = 0.0  # X
     node.inputs[1].default_value = 0.0  # Y
@@ -384,7 +384,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-80.0, 20.0))
     node.inputs[0].default_value = (0.0, 0.0, 0.0)  # Vector
     node = nodes.new('ShaderNodeSeparateXYZ')
@@ -392,7 +392,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-80.0, -20.0))
     node.inputs[0].default_value = (0.0, 0.0, 0.0)  # Vector
     node = nodes.new('ShaderNodeSeparateXYZ')
@@ -400,7 +400,7 @@ def default_custom_nodes():
     node.label = ''
     node.parent = frame
     node.hide = True
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.location = Vector((-80.0, -60.0))
     node.inputs[0].default_value = (0.0, 0.0, 0.0)  # Vector
 
@@ -409,19 +409,19 @@ def default_custom_nodes():
     node.label = ''
     node.location = Vector((840.0, -80.0))
     node.hide = False
-    node.color = Color((0.6079999804496765, 0.6079999804496765, 0.6079999804496765))
+    node.color = Color((0.6, 0.6, 0.6))
     node.inputs[0].default_value = (0.0, 0.0, 0.0)  # Normal
 
     # Connect the nodes
-    links.new(nodes['Group Input'].outputs['Strength'], nodes['Influence'].inputs[0])
-    links.new(nodes['Group Input'].outputs['Color'], nodes['Influence'].inputs[2])
-    links.new(nodes['Influence'].outputs['Color'], nodes['Vector Math.003'].inputs[0])
+    links.new(nodes['Group Input'].outputs['Strength'], nodes['Influence'].inputs['Fac'])
+    links.new(nodes['Group Input'].outputs['Color'], nodes['Influence'].inputs['Color2'])
+    links.new(nodes['Influence'].outputs['Color'], nodes['Vector Math.003'].inputs['Vector'])
     links.new(nodes['UV Gradients'].outputs['X'], nodes['Tangent'].inputs['Height'])
     links.new(nodes['UV Gradients'].outputs['Y'], nodes['Bi-Tangent'].inputs['Height'])
     links.new(nodes['UV Map'].outputs['UV'], nodes['UV Gradients'].inputs['Vector'])
-    links.new(nodes['Tangent'].outputs['Normal'], nodes['Separate XYZ.001'].inputs[0])
-    links.new(nodes['Bi-Tangent'].outputs['Normal'], nodes['Separate XYZ.002'].inputs[0])
-    links.new(nodes['Normal'].outputs['Normal'], nodes['Separate XYZ.003'].inputs[0])
+    links.new(nodes['Tangent'].outputs['Normal'], nodes['Separate XYZ.001'].inputs['Vector'])
+    links.new(nodes['Bi-Tangent'].outputs['Normal'], nodes['Separate XYZ.002'].inputs['Vector'])
+    links.new(nodes['Normal'].outputs['Normal'], nodes['Separate XYZ.003'].inputs['Vector'])
     links.new(nodes['Vector Math.004'].outputs['Vector'], nodes['Vector Math'].inputs[1])
     links.new(nodes['Combine XYZ.001'].outputs['Vector'], nodes['Vector Math'].inputs[0])
     links.new(nodes['Vector Math.004'].outputs['Vector'], nodes['Vector Math.001'].inputs[1])
