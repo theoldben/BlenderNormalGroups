@@ -21,7 +21,7 @@ bl_info = {
     "author": "Spooky spooky Ghostman, Kamikaze, crute",
     "description": "Replace Normal Nodes for better EEVEE Viewport-Performance",
     "blender": (4, 1, 0),
-    "version": (0, 2, 1),
+    "version": (0, 2, 2),
     "location": "Tools Panel (T) in Shader Node Editor",
     "warning": "",
     "category": "Material",
@@ -109,13 +109,15 @@ class MAT_OT_custom_normal(bpy.types.Operator):
                         uvNode.hide = True
                         uvNode.select = False
                         uvNode.location = Vector((new.location.x-200., new.location.y-10.))
-                        uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs["Color"])
+                        uvNode.id_data.links.new(uvNode.outputs['UV'], new.inputs["UV"])
                     else:
                         try:
                             for input in node.inputs:
                                 if input and isinstance(input, bpy.types.NodeSocketVector) and input.is_linked:
                                     if isinstance(input.links[0].from_node, bpy.types.ShaderNodeUVMap):
                                         uvNode = input.links[0].from_node
+                                        print(uvNode)
+                                        print(input.links[0])
                             new.uv_map = uvNode.uv_map
                             nodes.remove(uvNode)
                         except:
@@ -176,6 +178,9 @@ def default_custom_nodes():
     input.max_value = 1.0
     input = group.interface.new_socket("Color", in_out='INPUT', socket_type='NodeSocketColor')
     input.default_value = ((0.5, 0.5, 1.0, 1.0))
+
+    # Input UV as Backup
+    input = group.interface.new_socket("UV", in_out='INPUT', socket_type='NodeSocketVector')
 
     # Output
     group.interface.new_socket("Normal", in_out='OUTPUT', socket_type='NodeSocketVector')
