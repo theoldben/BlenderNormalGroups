@@ -285,7 +285,10 @@ def default_custom_nodes():
         node.inputs[4].default_value = 1.0  # Height_dy
         node.inputs[5].default_value = (0.0, 0.0, 0.0)  # Normal
     else:
-        node.inputs[3].default_value = (0.0, 0.0, 0.0)  # Normal
+        if bpy.app.version < (4, 4, 0):
+            node.inputs[3].default_value = (0.0, 0.0, 0.0)  # Normal
+        else:
+            node.inputs[4].default_value = (0.0, 0.0, 0.0)  # Normal
     # for inp in node.inputs:
     #     if inp.name not in ['Height']:
     #         node.inputs.remove(inp)
