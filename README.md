@@ -38,4 +38,6 @@ Many thanks for these!
 **Compatibility with 4.0 added**, graciously provided by Mustard https://github.com/Mustard2,  this will break compatibility with 2.8 through 3.0. 
 If you need the addon for these Blender versions, you can get it **from the according branch**. 
 
+**Compatibility with 4.4 added**, graciously provided by Mustard https://github.com/Mustard2, once again!
+
 Please note also, that if you have a file that still has normal groups from an older version in it, those will break the newer script. **Please convert those back to regular normal nodes in your older blender version and save the file for transfer to a newer one.**
